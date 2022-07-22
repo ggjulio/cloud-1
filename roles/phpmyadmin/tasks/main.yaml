@@ -1,0 +1,16 @@
+---
+- name: Deploy Phpmyadmin
+  community.docker.docker_container:
+    name: phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
+    networks:
+      - name: '{{ network_name }}'
+    ports:
+      - "8080:80"
+    volumes:
+      - phpmyadmin:/var/www/
+    env:
+      PMA_HOST: '{{ MYSQL_DATABASE }}'
+      PMA_PORT: "3306"
+      PMA_ARBITRARY: '1'
+    restart_policy: always

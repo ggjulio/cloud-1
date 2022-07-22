@@ -1,0 +1,44 @@
+---
+- name: Docker
+  tags: docker
+  #gather_facts: no
+  hosts: all
+  roles:
+    - role: docker
+
+- name: Portainer
+  tags: portainer
+  #gather_facts: no
+  hosts: all
+  roles:
+    - role: portainer
+
+- name: Network
+  tags: network
+  #gather_facts: no
+  hosts: all
+  tasks:
+    - name: Create a network
+      community.docker.docker_network:
+        name: '{{ network_name }}'
+
+- name: Wordpress
+  tags: wordpress
+  #  gather_facts: no
+  hosts: all
+  roles:
+    - role: wordpress
+
+- name: Database
+  tags: db
+  #gather_facts: no
+  hosts: all
+  roles:
+    - role: db
+
+- name: Phpmyadmin
+  tags: phpmyadmin
+  #gather_facts: no
+  hosts: all
+  roles:
+    - role: phpmyadmin

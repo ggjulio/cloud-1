@@ -1,0 +1,17 @@
+---
+- name: Deploy Wordpress
+  community.docker.docker_container:
+    name: wordpress
+    image: wordpress:latest
+    ports:
+      - "80:80"
+    networks:
+      - name: '{{ network_name }}'
+    volumes:
+      - wordpress:/var/www/html
+    env:
+      WORDPRESS_DB_HOST: "db"
+      WORDPRESS_DB_USER: '{{ MYSQL_USER }}'
+      WORDPRESS_DB_PASSWORD: '{{ MYSQL_PASSWORD }}'
+      WORDPRESS_DB_NAME: '{{ MYSQL_DATABASE }}'
+    restart_policy: always
