@@ -1,6 +1,7 @@
 website:
   hosts:
-    badass:
-      ansible_host: 127.0.0.1
-      ansible_user: root
-      ansible_port: 2222
+    192.168.56.10
+    # badass:
+    #   ansible_host: 127.0.0.1
+    #   ansible_user: root
+    #   ansible_port: 2222
