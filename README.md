@@ -18,6 +18,11 @@ ansible all -m ping
 ```
 - Ready for work !
 
+
+#### sources:
+
+- [ansible terminology- role, playbook, task...](https://stackoverflow.com/a/46105500/5374043)
+
 ## Useless :
 ##### Set up SSH connection by adding a public key to all hosts
 - Method one:
