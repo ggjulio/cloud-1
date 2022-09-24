@@ -1,22 +1,32 @@
-#### Using the vm provided by vagrant
+#### Using the Vagrant file
 
-##### Start the vm
-```sh
-vagrant up
+- You must have an rsa key named `id_rsa`
 ```
-##### get the host ip
+ls ~/.ssh
+```
+- Get and check host ip, make sure it match the ip defined in the Vagrantfile
 ```sh
 ansible all --list-hosts
 ```
+- Start the vm
+```sh
+vagrant up
+```
+- Check you can ping all hosts
+```sh
+ansible all -m ping
+```
+- Ready for work !
+
+## Useless :
 ##### Set up SSH connection by adding a public key to all hosts
 - Method one:
     ```shell
     ssh-copy-id -i ~/.ssh/your_key.pub user@X.X.X.X
     ```
     If password authentication is not enabled on the server, enable it in ` /etc/ssh/sshd_config` 
-    ```shell
+    ```
     PasswordAuthentication yes
-
     ```
     Then restart the service
     ```
@@ -24,8 +34,3 @@ ansible all --list-hosts
     ```
 - Method Two, paste your public key manually into `~/.ssh/authorized_keys` (use `vagrant ssh` to connect to the server)
 ---
-
-##### Ping hosts to check they are reachable
-```shell
-ansible all -m ping
-```

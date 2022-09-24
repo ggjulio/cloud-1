@@ -9,16 +9,15 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.network "private_network", ip: SERVER_IP
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "/tmp/id_rsa.pub"
 
-  config.vm.provision "shell", name: "Setting up badass", privileged: true,  inline: <<-SHELL
+  config.vm.provision "shell", name: "Setting up cloud-1", privileged: true,  inline: <<-SHELL
     set -e
     apt update
-    apt-get install -y emacs
 
-    echo -e "\nPasswordAuthentication yes" >> /etc/ssh/ssh_config
-    systemctl restart sshd
+    cat /tmp/id_rsa.pub >> ~/.ssh/authorized_keys
+    rm /tmp/id_rsa.pub
 
   SHELL
-
 
 end
