@@ -1,6 +1,6 @@
 #### Using the Vagrant file
 
-- You must have an rsa key named `id_rsa`
+- Must have an rsa key named `id_rsa` (defined in ansible.cfg)
 ```
 ls ~/.ssh
 ```
