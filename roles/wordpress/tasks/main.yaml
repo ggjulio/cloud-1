@@ -21,8 +21,6 @@
   community.docker.docker_container:
     name: wordpress
     image: ggjulio/wordpress
-    ports:
-      - "80:80"
     networks:
       - name: '{{ network_name }}'
     volumes:

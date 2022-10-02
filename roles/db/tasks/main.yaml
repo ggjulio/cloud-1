@@ -30,9 +30,9 @@
       MYSQL_GROOT_PASSWORD: '{{ MYSQL_PASSWORD }}'
       MYSQL_DATABASE: '{{ MYSQL_DATABASE }}'
       MYSQL_USER: '{{ MYSQL_USER }}'
-      MYSQL_PASSWORD: '{{ MYSQL_PASSWORD }}'      
+      MYSQL_PASSWORD: '{{ MYSQL_PASSWORD }}'
     restart_policy: always
-    state: started  
+    state: started
 
 # - name: Deploy MYSQL
 #   community.docker.docker_container:
