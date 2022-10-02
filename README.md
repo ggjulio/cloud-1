@@ -22,6 +22,7 @@ ansible all -m ping
 #### sources:
 
 - [ansible terminology- role, playbook, task...](https://stackoverflow.com/a/46105500/5374043)
+- [ansible examples](https://github.com/ansible/ansible-examples)
 
 ## Useless :
 ##### Set up SSH connection by adding a public key to all hosts

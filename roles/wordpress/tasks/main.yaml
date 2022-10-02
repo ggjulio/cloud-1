@@ -1,4 +1,22 @@
 ---
+# - name: Remove image
+#   community.docker.docker_image:
+#     name: ggjulio/wordpress
+#     state: absent
+#   delegate_to: localhost
+- name: Build, tag, push to dockerhub
+  community.docker.docker_image:
+    source: build
+    build:
+      path: ./images/wordpress
+    name: ggjulio/wordpress
+    tag: latest
+    repository: ggjulio/wordpress
+    push: yes
+    state: present
+  delegate_to: localhost
+
+
 - name: Deploy Wordpress
   community.docker.docker_container:
     name: wordpress
@@ -15,3 +33,4 @@
       WORDPRESS_DB_PASSWORD: '{{ MYSQL_PASSWORD }}'
       WORDPRESS_DB_NAME: '{{ MYSQL_DATABASE }}'
     restart_policy: always
+    state: started
