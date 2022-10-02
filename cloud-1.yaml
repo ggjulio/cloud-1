@@ -10,4 +10,5 @@
   roles:
     - role: db
     - role: wordpress
+    - role: nginx
     - role: phpmyadmin

@@ -1,0 +1,32 @@
+---
+# - name: Remove image
+#   community.docker.docker_image:
+#     name: ggjulio/nginx
+#     state: absent
+#   delegate_to: localhost
+- name: Build, tag, push to dockerhub
+  community.docker.docker_image:
+    source: build
+    build:
+      path: ./images/nginx
+    name: ggjulio/nginx
+    tag: latest
+    repository: ggjulio/nginx
+    push: yes
+    state: present
+  delegate_to: localhost
+
+
+- name: Deploy Nginx
+  community.docker.docker_container:
+    name: nginx
+    image: ggjulio/nginx
+    networks:
+      - name: '{{ network_name }}'
+    ports:
+      - "80:80"
+      - "443:443" # tls ?
+    volumes:
+      - wordpress:/var/www/app
+    restart_policy: always
+    state: started
