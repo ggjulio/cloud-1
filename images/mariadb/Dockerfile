@@ -23,10 +23,5 @@ VOLUME /var/lib/mysql
 COPY docker-entrypoint.sh /usr/local/bin
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-# This line init the db using a db dump.
-# Usually this is added in a custom image when using an official image
-COPY dump_wp.sql /docker-entrypoint-initdb.d/dump_wp.sql
-
-
 EXPOSE 3306
 CMD ["mysqld"]

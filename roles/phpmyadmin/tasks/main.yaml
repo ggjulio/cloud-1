@@ -1,23 +1,4 @@
 ---
-
-# - name: Remove image
-#   community.docker.docker_image:
-#     name: ggjulio/phpmyadmin
-#     state: absent
-#   delegate_to: localhost
-- name: Build, tag, push to dockerhub
-  community.docker.docker_image:
-    source: build
-    build:
-      path: ./images/phpmyadmin
-    name: ggjulio/phpmyadmin
-    tag: latest
-    repository: ggjulio/phpmyadmin
-    push: yes
-    state: present
-  delegate_to: localhost
-
-
 - name: Deploy Phpmyadmin
   community.docker.docker_container:
     name: phpmyadmin
@@ -29,19 +10,3 @@
       - /phpmyadmin:/var/www/app
     restart_policy: always
     state: started
-
-# - name: Deploy Phpmyadmin
-#   community.docker.docker_container:
-#     name: phpmyadmin
-#     image: phpmyadmin/phpmyadmin:latest
-#     networks:
-#       - name: '{{ network_name }}'
-#     ports:
-#       - "8080:80"
-#     volumes:
-#       - phpmyadmin:/var/www/
-#     env:
-#       PMA_HOST: '{{ MYSQL_DATABASE }}'
-#       PMA_PORT: "3306"
-#       PMA_ARBITRARY: '1'
-#     restart_policy: always

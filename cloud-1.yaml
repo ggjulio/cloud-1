@@ -14,7 +14,7 @@
       community.docker.docker_volume:
         name: 'phpmyadmin'
   roles:
-    - role: db
-    - role: wordpress
-    - role: nginx
-    - role: phpmyadmin
+    - db
+    - wordpress
+    - nginx
+    - phpmyadmin

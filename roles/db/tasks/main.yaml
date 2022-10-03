@@ -1,22 +1,4 @@
 ---
-# - name: Remove image
-#   community.docker.docker_image:
-#     name: ggjulio/mariadb
-#     state: absent
-#   delegate_to: localhost
-- name: Build, tag, push to dockerhub
-  community.docker.docker_image:
-    source: build
-    build:
-      path: ./images/mariadb
-    name: ggjulio/mariadb
-    tag: latest
-    repository: ggjulio/mariadb
-    push: yes
-    state: present
-  delegate_to: localhost
-
-
 - name: Deploy MYSQL
   community.docker.docker_container:
     name: db
@@ -27,26 +9,10 @@
     volumes:
       - db:/var/lib/mysql
     env:
-      MYSQL_GROOT_HOST: '%' # to change ?
+      MYSQL_GROOT_HOST: '%' # to change maybe
       MYSQL_GROOT_PASSWORD: '{{ MYSQL_PASSWORD }}'
       MYSQL_DATABASE: '{{ MYSQL_DATABASE }}'
       MYSQL_USER: '{{ MYSQL_USER }}'
       MYSQL_PASSWORD: '{{ MYSQL_PASSWORD }}'
     restart_policy: always
     state: started
-
-# - name: Deploy MYSQL
-#   community.docker.docker_container:
-#     name: db
-#     image: mysql:5.7
-#     networks:
-#       - name: '{{ network_name }}'
-#     volumes:
-#       - db:/var/lib/mysql
-#     env:
-#       MYSQL_DATABASE: '{{ MYSQL_DATABASE }}'
-#       MYSQL_USER: '{{ MYSQL_USER }}'
-#       MYSQL_PASSWORD: '{{ MYSQL_PASSWORD }}'
-#       MYSQL_RANDOM_ROOT_PASSWORD: '1'
-#     restart_policy: always
-#     state: started  
