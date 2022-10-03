@@ -7,6 +7,12 @@
     - name: Create a network
       community.docker.docker_network:
         name: '{{ network_name }}'
+    - name: Create wordpress volume
+      community.docker.docker_volume:
+        name: 'wordpress'
+    - name: Create phpmyadmin volume
+      community.docker.docker_volume:
+        name: 'phpmyadmin'
   roles:
     - role: db
     - role: wordpress

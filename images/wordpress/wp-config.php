@@ -32,10 +32,6 @@
     /** The Database Collate type. Don't change this if in doubt. */
     define( 'DB_COLLATE', '' );
 
-    /** For redis: config cache for total cache */
-    define('WP_REDIS_HOST', getenv('WP_REDIS_HOST'));
-    define('WP_CACHE', true);
-
     /**#@+
     * Authentication Unique Keys and Salts.
     *

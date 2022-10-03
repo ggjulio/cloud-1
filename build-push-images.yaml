@@ -1,0 +1,63 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Remove image
+      community.docker.docker_image:
+        name: ggjulio/mariadb
+        state: absent
+    - name: Build, tag, push to dockerhub
+      community.docker.docker_image:
+        source: build
+        build:
+          path: ./images/mariadb
+        name: ggjulio/mariadb
+        tag: latest
+        repository: ggjulio/mariadb
+        push: yes
+        state: present
+
+    - name: Remove image
+      community.docker.docker_image:
+        name: ggjulio/nginx
+        state: absent
+    - name: Build, tag, push to dockerhub
+      community.docker.docker_image:
+        source: build
+        build:
+          path: ./images/nginx
+        name: ggjulio/nginx
+        tag: latest
+        repository: ggjulio/nginx
+        push: yes
+        state: present
+
+    - name: Remove image
+      community.docker.docker_image:
+        name: ggjulio/wordpress
+        state: absent
+      delegate_to: localhost
+    - name: Build, tag, push to dockerhub
+      community.docker.docker_image:
+        source: build
+        build:
+          path: ./images/wordpress
+        name: ggjulio/wordpress
+        tag: latest
+        repository: ggjulio/wordpress
+        push: yes
+        state: present
+
+    - name: Remove image
+      community.docker.docker_image:
+        name: ggjulio/phpmyadmin
+        state: absent
+    - name: Build, tag, push to dockerhub
+      community.docker.docker_image:
+        source: build
+        build:
+          path: ./images/phpmyadmin
+        name: ggjulio/phpmyadmin
+        tag: latest
+        repository: ggjulio/phpmyadmin
+        push: yes
+        state: present

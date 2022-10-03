@@ -7,7 +7,7 @@ RUN apk update \
  && apk del openssl \
  && mkdir -p /run/nginx \
  && mkdir -p /var/www/app \
- && mkdir -p /var/www/adminer \
+ && mkdir -p /var/www/phpmyadmin \
  && ln -sf /dev/stdout /var/log/nginx/access.log \
  && ln -sf /dev/stderr /var/log/nginx/error.log
 

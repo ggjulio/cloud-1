@@ -21,15 +21,16 @@
   community.docker.docker_container:
     name: wordpress
     image: ggjulio/wordpress
+    pull: yes
     networks:
       - name: '{{ network_name }}'
     volumes:
-      - wordpress:/var/www/html
+      - /wordpress:/var/www/app
     env:
       MYSQL_DATABASE: '{{ MYSQL_DATABASE }}'
       MYSQL_USER: '{{ MYSQL_USER }}'
       MYSQL_PASSWORD: '{{ MYSQL_PASSWORD }}'
-      MYSQL_HOST: db      
+      MYSQL_HOST: db
     restart_policy: always
     state: started
 

@@ -21,12 +21,13 @@
   community.docker.docker_container:
     name: db
     image: ggjulio/mariadb
+    pull: yes
     networks:
       - name: '{{ network_name }}'
     volumes:
       - db:/var/lib/mysql
     env:
-      MYSQL_GROOT_HOST: '%'
+      MYSQL_GROOT_HOST: '%' # to change ?
       MYSQL_GROOT_PASSWORD: '{{ MYSQL_PASSWORD }}'
       MYSQL_DATABASE: '{{ MYSQL_DATABASE }}'
       MYSQL_USER: '{{ MYSQL_USER }}'
