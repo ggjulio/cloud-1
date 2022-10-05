@@ -8,5 +8,7 @@
       - name: '{{ network_name }}'
     volumes:
       - /phpmyadmin:/var/www/app
+    env:
+      DB_HOST: "db"
     restart_policy: always
     state: started

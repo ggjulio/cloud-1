@@ -23,6 +23,8 @@ decorate_workers_output = no										\n\
 
 VOLUME /var/www/app/
 
+COPY config.inc.php /tmp/config.inc.php
+
 COPY docker-entrypoint.sh /usr/local/bin
 ENTRYPOINT ["docker-entrypoint.sh"]
 
