@@ -4,4 +4,3 @@ network_name: 'wordpress'
 MYSQL_DATABASE: "{{ lookup('env','MYSQL_DATABASE') }}"
 MYSQL_USER: "{{ lookup('env','MYSQL_USER') }}"
 MYSQL_PASSWORD: "{{ lookup('env','MYSQL_PASSWORD') }}"
-MYSQL_ROOT_PASSWORD: "{{ lookup('env','MYSQL_ROOT_PASSWORD') }}"
