@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu
+
 # Install Ansible
 sudo apt update
 sudo apt install ansible

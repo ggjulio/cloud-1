@@ -1,0 +1,17 @@
+---
+- name: Deploy Nginx
+  community.docker.docker_container:
+    name: nginx
+    image: ggjulio/nginx
+    pull: yes
+    networks:
+      - name: '{{ network_name }}'
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080" # phpmyadmin
+    volumes:
+      - /wordpress:/var/www/app
+      - /phpmyadmin:/var/www/phpmyadmin
+    restart_policy: always
+    state: started
