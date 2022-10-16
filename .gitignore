@@ -1,3 +1,4 @@
 .env
 .vagrant/
 .vscode/
+cloud-1.pem

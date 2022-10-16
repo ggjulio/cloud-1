@@ -10,7 +10,7 @@
       - db:/var/lib/mysql
     env:
       MYSQL_GROOT_HOST: '%' # to change maybe
-      MYSQL_GROOT_PASSWORD: '{{ MYSQL_PASSWORD }}'
+      MYSQL_GROOT_PASSWORD: '{{ MYSQL_ROOT_PASSWORD }}'
       MYSQL_DATABASE: '{{ MYSQL_DATABASE }}'
       MYSQL_USER: '{{ MYSQL_USER }}'
       MYSQL_PASSWORD: '{{ MYSQL_PASSWORD }}'
